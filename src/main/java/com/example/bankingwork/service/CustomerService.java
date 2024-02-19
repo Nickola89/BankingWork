@@ -1,5 +1,6 @@
 package com.example.bankingwork.service;
 
+import com.example.bankingwork.exceptions.NoSuchCustomerException;
 import com.example.bankingwork.models.Customer;
 import com.example.bankingwork.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,22 +18,25 @@ public class CustomerService {
     @Autowired
     private final CustomerRepository customerRepository;
 
-    public Customer getById(Long id){
-        return customerRepository.getById(id);
-    }
-    public Optional<Customer> findById(Long id){
-        return customerRepository.findById(id);
-    }
     public Customer create(Customer customer){
-       return customerRepository.save(customer);
+        return customerRepository.save(customer);
     }
-    public Optional<Customer> update(Customer customer, Long id){
-        Optional<Customer> optionalSave = findById(id);
+
+    public Customer findById(Long id){
+        return customerRepository.findById(id).orElseThrow(()-> new NoSuchCustomerException("There is no customer with id: " + id + " in database"));
+    }
+
+    public List<Customer> getAllCustomers(){
+        return customerRepository.findAll();
+    }
+
+    public Customer update(Customer customer, Long id){
+       Customer optionalSave = findById(id);
         Customer customer1;
-        if (optionalSave.isEmpty()){
+        if (optionalSave == null) {
             return optionalSave;
         } else {
-            customer1 = optionalSave.get();
+            customer1 = optionalSave;
         }
         if (customer.getName()!=null){
             customer1.setName(customer.getName());
@@ -57,7 +62,7 @@ public class CustomerService {
         if (customer.getRegistrationDate()!=null){
             customer1.setRegistrationDate(customer.getRegistrationDate());
         }
-        return Optional.of(customerRepository.save(customer1));
+        return customerRepository.save(customer1);
     }
     public Optional<Customer> delete(Long id){
          customerRepository.deleteById(id);
