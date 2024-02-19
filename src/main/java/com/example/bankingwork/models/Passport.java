@@ -2,7 +2,6 @@ package com.example.bankingwork.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Comment;
 
 import java.time.LocalDate;
 @Entity
