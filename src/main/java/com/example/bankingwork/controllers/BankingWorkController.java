@@ -1,7 +1,6 @@
 package com.example.bankingwork.controllers;
 
 import com.example.bankingwork.exceptions.NoSuchCustomerException;
-import com.example.bankingwork.models.Account;
 import com.example.bankingwork.models.Customer;
 import com.example.bankingwork.models.Passport;
 import com.example.bankingwork.service.AccountService;
@@ -10,7 +9,6 @@ import com.example.bankingwork.service.PassportService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
