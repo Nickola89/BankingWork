@@ -23,10 +23,10 @@ public class Transaction {
             "с которого производится транзакция.")
     private Long senderAccountId;
 
-    @Column(name = "recepient_account_id")
+    @Column(name = "recipient_account_id")
     @Comment("идентификатор банковского счета, " +
             "на который производится транзакция.")
-    private Long recepientAccountId;
+    private Long recipientAccountId;
 
     @Column(name = "transaction_amount")
     @Comment("Сумма транзакции")
