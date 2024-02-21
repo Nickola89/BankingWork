@@ -19,9 +19,8 @@ public class AccountService {
     public Account create(Customer customer) {
         Random random = new Random();
         Long randomNumber = Math.abs(random.nextLong())/2;
-        System.out.println(randomNumber);
-        LocalDateTime openingDate = LocalDateTime.now();
 
+        LocalDateTime openingDate = LocalDateTime.now().withNano(0);
 
         Account account = Account.builder()
                 .accountNumber(randomNumber)
