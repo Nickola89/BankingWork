@@ -3,9 +3,11 @@ package com.example.bankingwork.controllers;
 import com.example.bankingwork.exceptions.NoSuchCustomerException;
 import com.example.bankingwork.models.Customer;
 import com.example.bankingwork.models.Passport;
+import com.example.bankingwork.models.Transaction;
 import com.example.bankingwork.service.AccountService;
 import com.example.bankingwork.service.CustomerService;
 import com.example.bankingwork.service.PassportService;
+import com.example.bankingwork.service.TransactionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ public class BankingWorkController {
     private CustomerService customerService;
     private PassportService passportService;
     private AccountService accountService;
+    private TransactionService transactionService;
 
 
     @GetMapping("/customer/{id}")
@@ -63,5 +66,13 @@ public class BankingWorkController {
         customerService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<HttpStatus> transfer(@RequestBody Transaction transaction){
+        transactionService.create(transaction);
+        accountService.writeOfMoney(transaction);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 
 }

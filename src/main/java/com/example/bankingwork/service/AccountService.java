@@ -2,6 +2,7 @@ package com.example.bankingwork.service;
 
 import com.example.bankingwork.models.Account;
 import com.example.bankingwork.models.Customer;
+import com.example.bankingwork.models.Transaction;
 import com.example.bankingwork.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,10 @@ public class AccountService {
         account.setCustomer(customer);
 
         return accountRepository.save(account);
+    }
+
+    public void writeOfMoney(Transaction transaction){
+        accountRepository.decreaseBalanceByCustomerId(transaction.getSenderAccountId(), transaction.getTransactionAmount());
+        accountRepository.increaseBalanceByCustomerId(transaction.getRecipientAccountId(), transaction.getTransactionAmount());
     }
 }

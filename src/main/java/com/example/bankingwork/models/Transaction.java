@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,7 +31,7 @@ public class Transaction {
 
     @Column(name = "transaction_amount")
     @Comment("Сумма транзакции")
-    private Long transactionAmount;
+    private BigDecimal transactionAmount;
 
     @Column(name = "date_time_transaction")
     @Comment("дата и время проведения транзакции")
