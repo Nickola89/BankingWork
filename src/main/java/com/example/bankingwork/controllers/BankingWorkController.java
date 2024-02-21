@@ -1,8 +1,10 @@
 package com.example.bankingwork.controllers;
 
 import com.example.bankingwork.exceptions.NoSuchCustomerException;
+import com.example.bankingwork.models.Account;
 import com.example.bankingwork.models.Customer;
 import com.example.bankingwork.models.Passport;
+import com.example.bankingwork.service.AccountService;
 import com.example.bankingwork.service.CustomerService;
 import com.example.bankingwork.service.PassportService;
 import lombok.AllArgsConstructor;
@@ -20,8 +22,8 @@ import java.util.Optional;
 public class BankingWorkController {
 
     private CustomerService customerService;
-
     private PassportService passportService;
+    private AccountService accountService;
 
 
     @GetMapping("/customer/{id}")
@@ -43,6 +45,7 @@ public class BankingWorkController {
     @PostMapping("/customer")
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
         customerService.create(customer);
+        accountService.create(customer);
         return ResponseEntity.ok(customer);
     }
 

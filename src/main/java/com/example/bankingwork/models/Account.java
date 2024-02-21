@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /*Банковский счет клиента*/
@@ -24,7 +25,6 @@ public class Account {
     @Comment("уникальный номер банковского счета")
     private Long accountNumber;
 
-
     @Comment("идентификатор клиента, " +
             "которому принадлежит счет")
     @OneToOne(cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class Account {
     private Customer customer;
 
     @Column(name = "balance")
-    private Long balance;
+    private BigDecimal balance;
 
     @Column(name = "opening_date")
     @Comment("дата открытия счета")

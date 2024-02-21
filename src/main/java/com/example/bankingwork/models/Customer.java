@@ -3,6 +3,7 @@ package com.example.bankingwork.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -37,6 +38,8 @@ public class Customer {
     private LocalDate birthday;
     @Column(name = "registration_date")
     private LocalDate registrationDate;
+    @Column(name = "cash")
+    private BigDecimal cash;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
