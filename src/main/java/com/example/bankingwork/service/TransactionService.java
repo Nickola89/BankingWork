@@ -15,15 +15,27 @@ import java.time.LocalDateTime;
 public class TransactionService {
     private TransactionRepository transactionRepository;
 
-    public Transaction create(Transaction transaction){
+
+    public Transaction create(Transaction tran){
         LocalDateTime transactionTime = LocalDateTime.now().withNano(0);
-        Transaction transaction1 = Transaction.builder()
-                .senderAccountId(transaction.getSenderAccountId())
-                .recipientAccountId(transaction.getRecipientAccountId())
-                .transactionAmount(transaction.getTransactionAmount())
+           Transaction transaction = Transaction.builder()
+                .senderAccountId(tran.getSenderAccountId())
+                .recipientAccountId(tran.getRecipientAccountId())
+                .transactionAmount(tran.getTransactionAmount())
                 .dateTimeTransaction(transactionTime)
-                .transactionType(TransactionType.TRANSFER)
+                .transactionType(tran.getTransactionType())
                 .build();
-        return transactionRepository.save(transaction1);
+        return transactionRepository.save(transaction);
+    }
+
+    public Transaction topUpAccount(Transaction tran){
+        LocalDateTime transactionTime = LocalDateTime.now().withNano(0);
+        Transaction transaction = Transaction.builder()
+                .senderAccountId(tran.getSenderAccountId())
+                .transactionAmount(tran.getTransactionAmount())
+                .transactionType(tran.getTransactionType())
+                .dateTimeTransaction(transactionTime)
+                .build();
+        return transactionRepository.save(transaction);
     }
 }

@@ -38,8 +38,7 @@ public class Transaction {
     private LocalDateTime dateTimeTransaction;
 
     @Column(name = "transaction_type")
-    @Enumerated(EnumType.STRING)// Указываем Hibernate, что значение этого поля должно быть сохранено в базе данных в виде строки, соответствующей имени элемента перечисления
-    private TransactionType transactionType;
+    private String transactionType;
 
 //    private String description;
 

@@ -74,5 +74,12 @@ public class BankingWorkController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @PostMapping("/top-up")
+    public ResponseEntity<HttpStatus> topUp(@RequestBody Transaction transaction){
+        transactionService.topUpAccount(transaction);
+        accountService.addMoneyToBalance(transaction);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 
 }

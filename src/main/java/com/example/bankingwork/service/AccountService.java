@@ -29,7 +29,7 @@ public class AccountService {
                 .openingDate(openingDate)
                 .build();
 
-        account.setCustomer(customer);
+//        account.setCustomer(customer);
 
         return accountRepository.save(account);
     }
@@ -37,5 +37,8 @@ public class AccountService {
     public void writeOfMoney(Transaction transaction){
         accountRepository.decreaseBalanceByCustomerId(transaction.getSenderAccountId(), transaction.getTransactionAmount());
         accountRepository.increaseBalanceByCustomerId(transaction.getRecipientAccountId(), transaction.getTransactionAmount());
+    }
+    public void addMoneyToBalance(Transaction transaction){
+        accountRepository.increaseBalanceByCustomerId(transaction.getSenderAccountId(), transaction.getTransactionAmount());
     }
 }
