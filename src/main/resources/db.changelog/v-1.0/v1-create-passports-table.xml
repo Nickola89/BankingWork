@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v-1.0-1" author="artemyev">
+        <createTable tableName="passports">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="issuing_country" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_of_issue" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="v-1.0-2" author="artemyev">
+        <loadData tableName="passports" file="db.changelog/data/passport-data.csv"/>
+    </changeSet>
+
+</databaseChangeLog>

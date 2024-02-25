@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v-1.0-3" author="artemyev">
+        <createTable tableName="customers">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" foreignKeyName="passport_id" referencedTableName="passports" referencedColumnNames="id"/>
+            </column>
+
+            <column name="name" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="age" type="int"></column>
+            <column name="address" type="varchar(50)"></column>
+            <column name="phone_number" type="varchar(50)"></column>
+            <column name="email" type="varchar(50)"></column>
+            <column name="birthday" type="date"></column>
+            <column name="registration_date" type="date"></column>
+            <column name="passport_id" type="bigint"></column>
+            <column name="cash" type="numeric"></column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v-1.0-4" author="artemyev">
+        <loadData tableName="customers" file="db.changelog/data/customer-data.csv"/>
+    </changeSet>
+
+</databaseChangeLog>
