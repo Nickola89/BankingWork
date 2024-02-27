@@ -5,10 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="v-1.0-3" author="artemyev">
+    <changeSet id="v-2.0-1" author="artemyev">
         <createTable tableName="customers">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" foreignKeyName="passport_id" referencedTableName="passports" referencedColumnNames="id"/>
+                <constraints primaryKey="true"/>
             </column>
 
             <column name="name" type="varchar(50)">
@@ -25,13 +25,15 @@
             <column name="email" type="varchar(50)"></column>
             <column name="birthday" type="date"></column>
             <column name="registration_date" type="date"></column>
-            <column name="passport_id" type="bigint"></column>
+            <column name="passport_id" type="bigint">
+                <constraints foreignKeyName="passport_id_fk" referencedTableName="passports" referencedColumnNames="id"/>
+            </column>
             <column name="cash" type="numeric"></column>
 
         </createTable>
     </changeSet>
 
-    <changeSet id="v-1.0-4" author="artemyev">
+    <changeSet id="v-2.0-2" author="artemyev">
         <loadData tableName="customers" file="db.changelog/data/customer-data.csv"/>
     </changeSet>
 

@@ -6,6 +6,13 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v-1.0-1" author="artemyev">
+        
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="passports"/>
+            </not>
+        </preConditions>
+        
         <createTable tableName="passports">
             <column name="id" type="serial" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -24,10 +31,12 @@
             </column>
 
         </createTable>
-
     </changeSet>
 
     <changeSet id="v-1.0-2" author="artemyev">
+        <preConditions onFail="MARK_RAN">
+                <tableExists tableName="passports"/>
+        </preConditions>
         <loadData tableName="passports" file="db.changelog/data/passport-data.csv"/>
     </changeSet>
 

@@ -1,5 +1,5 @@
 name,last_name,age,address,phone_number,email,birthday,registration_date,passport_id,cash
-Ivan,Ivanov,23,Lenin street,8-900-900-94-94,customer4@mail.ru,2001-10-11,2024-01-17,9808785632,15000
-Petr,Petrov,25,Ammosov street,8-900-900-93-93,customer3@mail.ru,2001-10-12,2024-02-15,9808342345,20000
-Oleg,Ivanov,27,Habarova street,8-900-900-95-95,customer5@mail.ru,2001-10-13,2024-02-18,9808123243,25000
-Anna,Smirnova,32,Krasnoyarova street,8-900-900-96-96,customer6@mail.ru,2001-10-15,2024-02-20,9808465768,30000
+Ivan,Ivanov,23,Lenin street,8-900-900-94-94,customer4@mail.ru,2001-10-11,2024-01-17,1,15000
+Petr,Petrov,25,Ammosov street,8-900-900-93-93,customer3@mail.ru,2001-10-12,2024-02-15,2,20000
+Oleg,Ivanov,27,Habarova street,8-900-900-95-95,customer5@mail.ru,2001-10-13,2024-02-18,3,25000
+Anna,Smirnova,32,Krasnoyarova street,8-900-900-96-96,customer6@mail.ru,2001-10-15,2024-02-20,4,30000
