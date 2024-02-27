@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v-4.0-1" author="artemyev">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="transactions"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="transactions">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="sender_account_id" type="bigint">
+                <constraints foreignKeyName="sender_account_id_fk" referencedTableName="customers" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+
+            <column name="recipient_account_id" type="bigint">
+                <constraints foreignKeyName="recipient_account_id_fk" referencedTableName="customers" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+
+            <column name="transaction_amount" type="bigint"></column>
+
+            <column name="date_time_transaction" type="timestamp"></column>
+
+            <column name="transaction_type" type="text"></column>
+
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet id="v-4.0-2" author="artemyev">
+        <loadData tableName="transactions" file="db.changelog/data/transaction-data.csv"/>
+    </changeSet>-->
+
+</databaseChangeLog>

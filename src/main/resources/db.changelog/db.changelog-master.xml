@@ -15,14 +15,26 @@
 
     <include file="v-1.0/db.changelog-v.1.0.xml" relativeToChangelogFile="true"/>
 
-    <changeSet id="4" author="artemyev">
+    <changeSet id="1" author="artemyev">
         <tagDatabase tag="v.1.0"/>
     </changeSet>
 
     <include file="v-2.0/db.changelog-v.2.0.xml" relativeToChangelogFile="true"/>
 
-    <changeSet id="11" author="artemyev">
+    <changeSet id="2" author="artemyev">
         <tagDatabase tag="v.2.0"/>
+    </changeSet>
+
+    <include file="v-3.0/db.changelog-v.3.0.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="3" author="artemyev">
+        <tagDatabase tag="v.3.0"/>
+    </changeSet>
+
+    <include file="v-4.0/db.changelog-v.4.0.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="4" author="artemyev">
+        <tagDatabase tag="v.4.0"/>
     </changeSet>
 
 </databaseChangeLog>

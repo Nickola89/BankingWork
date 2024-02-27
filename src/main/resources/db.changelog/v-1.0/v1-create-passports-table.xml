@@ -35,7 +35,7 @@
 
     <changeSet id="v-1.0-2" author="artemyev">
         <preConditions onFail="MARK_RAN">
-                <tableExists tableName="passports"/>
+                <tableIsEmpty tableName="passports"/>
         </preConditions>
         <loadData tableName="passports" file="db.changelog/data/passport-data.csv"/>
     </changeSet>

@@ -6,6 +6,13 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v-2.0-1" author="artemyev">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="customers"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="customers">
             <column name="id" type="serial" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -26,7 +33,7 @@
             <column name="birthday" type="date"></column>
             <column name="registration_date" type="date"></column>
             <column name="passport_id" type="bigint">
-                <constraints foreignKeyName="passport_id_fk" referencedTableName="passports" referencedColumnNames="id"/>
+                <constraints foreignKeyName="passport_id_fk" referencedTableName="passports" referencedColumnNames="id" deleteCascade="true"/>
             </column>
             <column name="cash" type="numeric"></column>
 
@@ -34,6 +41,11 @@
     </changeSet>
 
     <changeSet id="v-2.0-2" author="artemyev">
+
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="customers"/>
+        </preConditions>
+
         <loadData tableName="customers" file="db.changelog/data/customer-data.csv"/>
     </changeSet>
 

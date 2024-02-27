@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v-3.0-1" author="artemyev">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="accounts"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="accounts">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="account_number" type="bigint">
+                <constraints nullable="true" unique="true"/>
+            </column>
+
+            <column name="customer_id" type="bigint">
+                <constraints foreignKeyName="customer_id_fk" referencedTableName="customers" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+
+            <column name="balance" type="bigint"></column>
+
+            <column name="opening_date" type="timestamp"></column>
+
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet id="v-3.0-2" author="artemyev">
+        <loadData tableName="accounts" file="db.changelog/data/account-data.csv"/>
+    </changeSet>-->
+
+</databaseChangeLog>
