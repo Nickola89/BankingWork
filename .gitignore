@@ -25,6 +25,8 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+jpb-settings.xml
+
 
 ### NetBeans ###
 /nbproject/private/

@@ -1,7 +1,6 @@
 package com.example.bankingwork.service;
 
 import com.example.bankingwork.models.Transaction;
-import com.example.bankingwork.models.TransactionType;
 import com.example.bankingwork.repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
