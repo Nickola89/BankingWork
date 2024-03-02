@@ -29,7 +29,7 @@ public class AccountService {
                 .openingDate(openingDate)
                 .build();
 
-//        account.setCustomer(customer);
+        account.setCustomer(customer);
 
         return accountRepository.save(account);
     }

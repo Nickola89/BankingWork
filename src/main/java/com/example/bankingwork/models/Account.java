@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /*Банковский счет клиента*/
 @Entity
-@Table(name = "accounts", schema = "transactiondata")
+@Table(name = "accounts")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
